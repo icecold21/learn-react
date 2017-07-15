@@ -14,6 +14,15 @@ class Clock extends Component {
 
     console.log('this.props', this.props);
   }
+  // lifecycle
+  componentWillMount() {
+    // before it renders to the application
+    this.getTimeUntil(this.props.deadline);
+  }
+
+  componentDidMount() {
+    setInterval(() => this.getTimeUntil(this.props.deadline), 1000);
+  }
 
   getTimeUntil(deadline) {
     const time    = Date.parse(deadline) - Date.parse(new Date());
@@ -22,12 +31,12 @@ class Clock extends Component {
     const hours   = Math.floor(time / 1000 / 3600) % 24;
     const days    = Math.floor(time / 1000 / 3600 / 24);
 
-    console.log('seconds', seconds, 'minutes', minutes, 'hours', hours, 'days', days);
-    this.setState({days: days});
+    // this.setState({ days: days, hours: hours, minutes: minutes, seconds: seconds }); long version
+    this.setState({ days, hours, minutes, seconds });
   }
 
   render() {
-    this.getTimeUntil(this.props.deadline);
+    // this.getTimeUntil(this.props.deadline); this is infinite loop error
     return(
       <div>
         <div className='Clock-days'>{ this.state.days } days</div>
