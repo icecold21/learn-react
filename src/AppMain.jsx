@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Clock from './Clock';
+import Stopwatch from './Stopwatch';
 import './App.css';
 import { Form, FormControl, Button } from 'react-bootstrap';
 
@@ -38,6 +39,11 @@ class AppMain extends Component{
             Submit
           </Button>
         </Form>
+
+        <hr />
+
+        <div className='App-title'>JW Stopwatch</div>
+        <Stopwatch />
       </div>
     )
   }
