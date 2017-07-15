@@ -35,14 +35,18 @@ class Clock extends Component {
     this.setState({ days, hours, minutes, seconds });
   }
 
+  leadingZero(num) {
+    return num < 10 ? ('0' + num) : num;
+  }
+
   render() {
     // this.getTimeUntil(this.props.deadline); this is infinite loop error
     return(
       <div>
-        <div className='Clock-days'>{ this.state.days } days</div>
-        <div className='Clock-hours'>{ this.state.hours } hours</div>
-        <div className='Clock-minutes'>{ this.state.minutes } minutes</div>
-        <div className='Clock-seconds'>{ this.state.seconds } seconds</div>
+        <div className='Clock-days'>{ this.leadingZero(this.state.days) } days</div>
+        <div className='Clock-hours'>{ this.leadingZero(this.state.hours) } hours</div>
+        <div className='Clock-minutes'>{ this.leadingZero(this.state.minutes) } minutes</div>
+        <div className='Clock-seconds'>{ this.leadingZero(this.state.seconds) } seconds</div>
       </div>
     )
   }
